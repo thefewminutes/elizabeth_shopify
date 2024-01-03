@@ -27,10 +27,10 @@
             {% when 'featured_image' %}
                 <div itemprop="image" class="max-w-7xl bg-blue-100 rounded-lg mx-2 md:mx-auto overflow-hidden my-4">
                     {% if article.image != blank %}
-                        <img class="w-full h-80 md:h-96 object-cover object-center p-5" src="{{ article.image | img_url: 'large' }}" alt="{{ article.image.alt }}">
+                        <img class="w-full h-80 md:h-96 object-cover object-center p-5" src="{{ article.image | image_url: 'large' }}" alt="{{ article.image.alt }}">
                     {% else %}
                         {% assign placeholder_image = 'lifestyle-1' %}
-                        {{ placeholder_image | placeholder_svg_tag: 'w-full h-80 md:h-96 object-cover object-center p-5'}}
+                        {{ placeholder_image | placeholder_svg_tag: 'w-full h-80 md:h-96 object-cover object-center p-5' }}
                     {% endif %}
                 </div>
             {% when 'article_content' %}
@@ -53,7 +53,7 @@
                 {% paginate article.comments by 5 %}
                     {% for comment in article.comments %}
                         <div class="flex-1 border my-4 px-4 py-2 sm:py-4 leading-relaxed">
-                            <span class="comment-author">{{ comment.author }}</span> <span class="text-xs text-gray-400">{{  comment.created_at | date: format: 'default' }}</span>
+                            <span class="comment-author">{{ comment.author }}</span> <span class="text-xs text-gray-400">{{ comment.created_at | date: format: 'default' }}</span>
                             <p class="text-sm">{{ comment.content }}</p>
                         </div>
                     {% endfor %}
